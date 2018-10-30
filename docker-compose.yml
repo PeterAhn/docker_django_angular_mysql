@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: qwe123
+      MYSQL_DATABASE: svdb
+      MYSQL_USER: svdbadmin
+      MYSQL_PASSWORD: qwe123
+
+  web:
+    build: backend 
+    command: bash -c "sleep 10 && python3 backend/manage.py runserver 0.0.0.0:8000"
+    links:
+      - db
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  angular:
+    build: frontend
+    command: "npm start"
+    ports:
+      - "4200:4200"
+      - "49153:49153"
+    expose:
+      - "4200"
+      - "49153"
+    depends_on:
+     - web
