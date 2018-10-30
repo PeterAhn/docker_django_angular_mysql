@@ -1,3 +1,4 @@
+*.pyc
 
 # dependencies
 /node_modules
