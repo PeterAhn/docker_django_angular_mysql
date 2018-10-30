@@ -81,8 +81,6 @@ DATABASES = {
 	'PASSWORD': 'qwe123',
 	'HOST': 'db',
 	'PORT': '3306',
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

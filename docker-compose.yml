@@ -15,7 +15,7 @@ services:
 
   web:
     build: backend 
-    command: bash -c "sleep 10 && python3 backend/manage.py runserver 0.0.0.0:8000"
+    command: bash -c "sleep 3 && python3 backend/manage.py runserver 0.0.0.0:8000"
     links:
       - db
     volumes:
@@ -24,6 +24,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      
   angular:
     build: frontend
     command: "npm start"
